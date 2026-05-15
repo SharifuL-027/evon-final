@@ -23,27 +23,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        
-        {/* =========================================
-            CUSTOMER ROUTES (Uses the Navbar)
-            ========================================= */}
+
         <Route element={<StoreLayout />}>
-          {/* Both Hero and Products show on the Home page */}
-          <Route path="/" element={<><Hero /><Products /></>} />
-          
-          {/* Only Products show on the Products page */}
+          <Route path="/" element={<><Hero /><Products /></>} />        
           <Route path="/products" element={<Products />} />
         </Route>
-
-
-        {/* =========================================
-            ADMIN ROUTES (NO Navbar!)
-            ========================================= */}
-        
-        {/* Admin Login - Standalone clean page */}
         <Route path="/admin/login" element={<AdminLogin />} />
-
-        {/* Admin Dashboard - Protected by Firebase Auth */}
         <Route 
           path="/admin/dashboard" 
           element={
