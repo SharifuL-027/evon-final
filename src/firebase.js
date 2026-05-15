@@ -4,12 +4,13 @@ import { getAuth } from "firebase/auth";
 
 // Replace this with your actual Firebase config object
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyBUrvuQG62hIJccgGarDM6fpOKlrY3O-kU",
+  authDomain: "evon-final.firebaseapp.com",
+  projectId: "evon-final",
+  storageBucket: "evon-final.firebasestorage.app",
+  messagingSenderId: "832507541607",
+  appId: "1:832507541607:web:a54de97a92feb3103cbcc2",
+  measurementId: "G-57RFML5DCK"
 };
 
 const app = initializeApp(firebaseConfig);
