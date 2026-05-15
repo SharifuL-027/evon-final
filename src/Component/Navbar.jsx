@@ -29,8 +29,6 @@ const Navbar = () => {
   }, [lastScrollY]);
 
   return (
-    // 1. Glossy fix: 'bg-slate-950/70' and 'backdrop-blur-lg' creates the glass effect.
-    // 2. Hide fix: The 'translate-y' classes move the navbar up and out of view smoothly.
     <nav 
       className={`fixed w-full z-50 top-0 left-0 border-b border-white/10 shadow-xl transition-transform duration-300 ease-in-out bg-slate-950/70 backdrop-blur-lg
       ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
@@ -59,7 +57,7 @@ const Navbar = () => {
             <Link to="/about" className="text-slate-300 hover:text-indigo-400 font-semibold tracking-wide transition-colors">About</Link>
           </div>
 
-          {/* Search & Cart Area */}
+          {/* Search, Cart, & Login Area */}
           <div className="hidden md:flex items-center gap-6">
             <div className="flex items-center bg-slate-900/50 border border-slate-700/50 rounded-full overflow-hidden focus-within:border-indigo-500 transition-all">
               <input type="text" placeholder="Search shoes..." className="bg-transparent text-slate-200 px-5 py-2.5 focus:outline-none w-56 text-sm placeholder-slate-500" />
@@ -71,6 +69,13 @@ const Navbar = () => {
             <Link to="/checkout/1" className="relative bg-indigo-600 hover:bg-indigo-500 p-3 rounded-full transition-all shadow-[0_0_10px_rgba(99,102,241,0.3)]">
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
               <span className="absolute -top-1 -right-1 bg-rose-500 text-white text-[10px] font-bold rounded-full h-5 w-5 flex items-center justify-center border-2 border-slate-950">2</span>
+            </Link>
+
+            {/* ADMIN LOGIN ICON */}
+            <Link to="/admin/login" className="text-slate-300 hover:text-indigo-400 transition-colors p-2" title="Admin Login">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+              </svg>
             </Link>
           </div>
 
@@ -98,6 +103,13 @@ const Navbar = () => {
             <Link to="/products" onClick={() => setIsOpen(false)} className="block text-slate-300 hover:text-white font-semibold px-2">Shop</Link>
             <Link to="/blog" onClick={() => setIsOpen(false)} className="block text-slate-300 hover:text-white font-semibold px-2">Blog</Link>
             <Link to="/about" onClick={() => setIsOpen(false)} className="block text-slate-300 hover:text-white font-semibold px-2">About</Link>
+            
+            {/* MOBILE ADMIN LOGIN LINK */}
+            <div className="pt-4 mt-2 border-t border-slate-800">
+              <Link to="/admin/login" onClick={() => setIsOpen(false)} className="block text-slate-400 hover:text-indigo-400 font-semibold px-2">
+                Admin Login
+              </Link>
+            </div>
           </div>
         </div>
       )}
