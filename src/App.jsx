@@ -8,6 +8,7 @@ import Products from './Component/Products';
 import AdminLogin from './Component/AdminLogin';
 import ProtectedRoute from './Component/ProtectedRoute';
 import AdminDashboard from './Component/AdminDashboard'; 
+import ProductDetails from './Component/ProductDetails';
 const StoreLayout = () => {
   return (
     <>
@@ -28,6 +29,7 @@ function App() {
           <Route path="/" element={<><Hero /><Products /></>} />        
           <Route path="/products" element={<Products />} />
         </Route>
+        <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route 
           path="/admin/dashboard" 

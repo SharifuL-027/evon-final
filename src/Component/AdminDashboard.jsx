@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+/* eslint-disable react-hooks/set-state-in-effect */
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 
-// Dummy initial data for testing the UI
-const initialProducts = [
-  { id: 1, name: 'Rustwood Classic', price: 125, stock: 'In Stock', image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=100' },
-  { id: 2, name: 'Casual Core - Black', price: 85, stock: 'Sold Out', image: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=100' },
-];
-
+// Dummy orders (Kept for now so your Orders tab doesn't break)
 const dummyOrders = [
   { id: '#ORD-001', customer: 'John Doe', date: 'Oct 24, 2023', total: '$125.00', status: 'Pending' },
   { id: '#ORD-002', customer: 'Jane Smith', date: 'Oct 23, 2023', total: '$250.00', status: 'Shipped' },
@@ -18,11 +14,34 @@ const dummyOrders = [
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('products');
-  const [products, setProducts] = useState(initialProducts);
   
-  // Modal states for Add/Edit
+  // REAL DATA STATES
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  // Modal states
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingProduct, setEditingProduct] = useState(null); // null means "Adding new", object means "Editing"
+  const [editingProduct, setEditingProduct] = useState(null); 
+
+  // --- FETCH PRODUCTS FROM MONGODB ---
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/products');
+      const data = await response.json();
+      if (response.ok) {
+        setProducts(data);
+      }
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Run the fetch function when the dashboard loads
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   const handleLogout = async () => {
     try {
@@ -33,10 +52,62 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleDeleteProduct = (id) => {
-    if(window.confirm("Are you sure you want to delete this product?")) {
-      setProducts(products.filter(p => p.id !== id));
-      // TODO: Later, add your Express.js DELETE API call here
+  const handleSaveProduct = async (e) => {
+    e.preventDefault();
+    
+    const form = e.target;
+    const formData = new FormData();
+    
+    formData.append('name', form.name.value);
+    formData.append('price', form.price.value);
+    formData.append('status', form.status.value);
+    formData.append('description', form.description.value);
+
+    const files = form.images.files;
+    for (let i = 0; i < files.length; i++) {
+      formData.append('images', files[i]);
+    }
+
+    try {
+      const response = await fetch('http://localhost:5000/api/products', {
+        method: 'POST',
+        body: formData, 
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert('Product successfully added to MongoDB!');
+        setIsModalOpen(false); 
+        fetchProducts(); // <-- INSTANTLY REFRESH THE TABLE!
+      } else {
+        alert(`Error: ${data.message}`);
+      }
+    } catch (error) {
+      console.error('Failed to save product:', error);
+      alert('Failed to connect to the server.');
+    }
+  };
+
+const handleDeleteProduct = async (id) => {
+    if(window.confirm("Are you sure you want to permanently delete this product?")) {
+      try {
+        // 1. Send the DELETE request to your backend
+        const response = await fetch(`http://localhost:5000/api/products/${id}`, {
+          method: 'DELETE',
+        });
+
+        if (response.ok) {
+          // 2. If successful, remove it from the screen instantly
+          setProducts(products.filter(p => p._id !== id));
+          alert('Product deleted successfully!');
+        } else {
+          alert('Failed to delete product.');
+        }
+      } catch (error) {
+        console.error('Error deleting product:', error);
+        alert('Server error while trying to delete.');
+      }
     }
   };
 
@@ -60,18 +131,12 @@ const AdminDashboard = () => {
         </div>
         
         <nav className="flex-1 px-4 py-6 space-y-2">
-          <button 
-            onClick={() => setActiveTab('products')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors ${activeTab === 'products' ? 'bg-indigo-50 text-indigo-700' : 'text-gray-600 hover:bg-gray-50'}`}
-          >
+          <button onClick={() => setActiveTab('products')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors ${activeTab === 'products' ? 'bg-indigo-50 text-indigo-700' : 'text-gray-600 hover:bg-gray-50'}`}>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
             Products
           </button>
           
-          <button 
-            onClick={() => setActiveTab('orders')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors ${activeTab === 'orders' ? 'bg-indigo-50 text-indigo-700' : 'text-gray-600 hover:bg-gray-50'}`}
-          >
+          <button onClick={() => setActiveTab('orders')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors ${activeTab === 'orders' ? 'bg-indigo-50 text-indigo-700' : 'text-gray-600 hover:bg-gray-50'}`}>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
             Orders
           </button>
@@ -110,24 +175,35 @@ const AdminDashboard = () => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
-                  {products.map((product) => (
-                    <tr key={product.id} className="hover:bg-gray-50 transition-colors">
-                      <td className="p-4 flex items-center gap-4">
-                        <img src={product.image} alt={product.name} className="w-12 h-12 rounded-lg object-cover bg-gray-100" />
-                        <span className="font-semibold text-gray-900">{product.name}</span>
-                      </td>
-                      <td className="p-4 text-gray-600">${product.price.toFixed(2)}</td>
-                      <td className="p-4">
-                        <span className={`px-3 py-1 text-xs font-bold rounded-full ${product.stock === 'In Stock' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-                          {product.stock}
-                        </span>
-                      </td>
-                      <td className="p-4 text-right">
-                        <button onClick={() => openEditModal(product)} className="text-indigo-600 hover:text-indigo-900 font-medium mr-4">Edit</button>
-                        <button onClick={() => handleDeleteProduct(product.id)} className="text-red-600 hover:text-red-900 font-medium">Delete</button>
-                      </td>
-                    </tr>
-                  ))}
+                  {/* DYNAMIC RENDERING BASED ON MONGODB DATA */}
+                  {isLoading ? (
+                    <tr><td colSpan="4" className="p-10 text-center text-gray-500 font-medium">Loading products...</td></tr>
+                  ) : products.length === 0 ? (
+                    <tr><td colSpan="4" className="p-10 text-center text-gray-500 font-medium">No products found. Click "Add Product" to create one!</td></tr>
+                  ) : (
+                    products.map((product) => (
+                      <tr key={product._id} className="hover:bg-gray-50 transition-colors">
+                        <td className="p-4 flex items-center gap-4">
+                          <img 
+                            src={product.images && product.images.length > 0 ? product.images[0].url : 'https://via.placeholder.com/150'} 
+                            alt={product.name} 
+                            className="w-12 h-12 rounded-lg object-cover bg-gray-100 border border-gray-200" 
+                          />
+                          <span className="font-semibold text-gray-900">{product.name}</span>
+                        </td>
+                        <td className="p-4 text-gray-600 font-medium">${product.price.toFixed(2)}</td>
+                        <td className="p-4">
+                          <span className={`px-3 py-1 text-xs font-bold rounded-full ${product.status === 'In Stock' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                            {product.status}
+                          </span>
+                        </td>
+                        <td className="p-4 text-right">
+                          <button onClick={() => openEditModal(product)} className="text-indigo-600 hover:text-indigo-900 font-medium mr-4">Edit</button>
+                          <button onClick={() => handleDeleteProduct(product._id)} className="text-red-600 hover:text-red-900 font-medium">Delete</button>
+                        </td>
+                      </tr>
+                    ))
+                  )}
                 </tbody>
               </table>
             </div>
@@ -138,7 +214,6 @@ const AdminDashboard = () => {
         {activeTab === 'orders' && (
           <div>
             <h1 className="text-3xl font-bold text-gray-900 mb-8">Customer Orders</h1>
-            
             <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
               <table className="w-full text-left border-collapse">
                 <thead>
@@ -186,27 +261,34 @@ const AdminDashboard = () => {
               </button>
             </div>
             
-            <form className="p-6 space-y-4" onSubmit={(e) => { e.preventDefault(); setIsModalOpen(false); }}>
+            <form className="p-6 space-y-4" onSubmit={handleSaveProduct}>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Product Name</label>
-                <input type="text" defaultValue={editingProduct?.name || ''} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none" required />
+                <input type="text" name="name" id="name" defaultValue={editingProduct?.name || ''} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none" required />
               </div>
               <div className="flex gap-4">
                 <div className="flex-1">
                   <label className="block text-sm font-medium text-gray-700 mb-1">Price ($)</label>
-                  <input type="number" defaultValue={editingProduct?.price || ''} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none" required />
+                  <input type="number" name="price" id="price" defaultValue={editingProduct?.price || ''} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none" required />
                 </div>
                 <div className="flex-1">
                   <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                  <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
-                    <option>In Stock</option>
-                    <option>Sold Out</option>
+                  <select name="status" id="status" defaultValue={editingProduct?.status || 'In Stock'} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
+                    <option value="In Stock">In Stock</option>
+                    <option value="Sold Out">Sold Out</option>
                   </select>
                 </div>
               </div>
+              
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Image URL</label>
-                <input type="text" defaultValue={editingProduct?.image || ''} placeholder="https://..." className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none" required />
+                <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                <textarea name="description" id="description" rows="3" defaultValue={editingProduct?.description || ''} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none" required></textarea>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Upload Images (Max 5)</label>
+                <input type="file" name="images" id="images" multiple accept="image/*" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none" required={!editingProduct} />
+                <p className="text-xs text-gray-500 mt-1">Select up to 5 images. The first image will be the main display.</p>
               </div>
               
               <div className="pt-4 flex gap-3">
