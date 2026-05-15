@@ -2,21 +2,30 @@
 import { BrowserRouter, Routes, Route } from 'react-router';
 import Navbar from './Component/Navbar';
 import Hero from './Component/Hero';
+import Products from './Component/Products';
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar></Navbar>
-      <Hero></Hero>
-      <main className="pt-20 min-h-screen bg-gray-50">
+      <Navbar /> 
+      
+      <main className="min-h-screen bg-slate-950">
         <Routes>
-          {/* Static Routes */}
-          {/* <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} /> */}
+          
+          {/* THE FIX: Render BOTH Hero and Products on the Homepage (/) */}
+          <Route 
+            path="/" 
+            element={
+              <>
+                <Hero />
+                <Products />
+              </>
+            } 
+          />
 
-          {/* Dynamic Routes (Notice the :id) */}
-          {/* <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path="/checkout/:id" element={<OrderPage />} /> */}
+          {/* You can keep this here if you still want a separate page dedicated just to products */}
+          <Route path="/products" element={<Products />} />
+
         </Routes>
       </main>
     </BrowserRouter>
