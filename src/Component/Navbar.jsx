@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router'; 
 
 const Navbar = () => {
   // State for mobile menu
@@ -30,7 +30,8 @@ const Navbar = () => {
 
   return (
     <nav 
-      className={`fixed w-full z-50 top-0 left-0 border-b border-white/10 shadow-xl transition-transform duration-300 ease-in-out bg-slate-950/70 backdrop-blur-lg
+      // CHANGED: border-white/10 is now border-slate-800 for a seamless blend
+      className={`fixed w-full z-50 top-0 left-0 border-b border-slate-800 shadow-xl transition-transform duration-300 ease-in-out bg-slate-950/70 backdrop-blur-lg
       ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
     >
       <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,8 +39,8 @@ const Navbar = () => {
           
           {/* Logo Area */}
           <div className="flex-shrink-0 flex items-center gap-3">
-           
-            <Link to="/" className="text-3xl font-extrabold text-white tracking-[0.15em] border-y-2 border-white/20 py-0.5 hover:border-indigo-500 transition-colors">
+            {/* CHANGED: border-white/20 is now border-slate-700 */}
+            <Link to="/" className="text-3xl font-extrabold text-white tracking-[0.15em] border-y-2 border-slate-700 py-0.5 hover:border-indigo-500 transition-colors">
               EVON
             </Link>
           </div>
