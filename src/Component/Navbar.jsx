@@ -38,12 +38,7 @@ const Navbar = () => {
           
           {/* Logo Area */}
           <div className="flex-shrink-0 flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-indigo-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20 16a4 4 0 0 1-4 4h-2.5l-3-2H6.5a2.5 2.5 0 0 1-2.5-2.5V13a2.5 2.5 0 0 1 2.5-2.5H8l2.5-3.5h3.5" />
-              <path d="M12 7l1.5 3.5h3.5l3.5 2V16" />
-              <path d="M6 13h1" />
-              <path d="M10 17.5l-1.5 2" />
-            </svg>
+           
             <Link to="/" className="text-3xl font-extrabold text-white tracking-[0.15em] border-y-2 border-white/20 py-0.5 hover:border-indigo-500 transition-colors">
               EVON
             </Link>
