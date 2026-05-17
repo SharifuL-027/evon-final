@@ -1,0 +1,123 @@
+import React from 'react';
+
+const Reviews = () => {
+  // =========================================
+  // 🌟 MOCK REVIEW DATA (2026 Version) 🌟
+  // =========================================
+  const reviews = [
+    {
+      id: 1,
+      name: "Tahmina Akter",
+      date: "October 12, 2026",
+      rating: 5,
+      comment: "Absolutely love the quality! The material is exactly as described and it fits perfectly. Delivery was super fast too.",
+      images: ["https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&auto=format&fit=crop&q=60"]
+    },
+    {
+      id: 2,
+      name: "Sarah Rahman",
+      date: "November 05, 2026",
+      rating: 5,
+      comment: "Premium packaging and the color is gorgeous. I wore it to an event and got so many compliments! Highly recommend EVON.",
+      images: [
+        "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1588117305388-c2631a279f82?w=500&auto=format&fit=crop&q=60"
+      ]
+    },
+    {
+      id: 3,
+      name: "Nadia Islam",
+      date: "December 01, 2026",
+      rating: 4,
+      comment: "Very beautiful and comfortable. Dropping one star because the delivery took an extra day, but the product itself is flawless.",
+      images: []
+    },
+    {
+      id: 4,
+      name: "Ayesha S.",
+      date: "January 15, 2026",
+      rating: 5,
+      comment: "Worth every Taka! The stitching is top-notch and the inner material feels very luxurious. Will definitely order again.",
+      images: ["https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&auto=format&fit=crop&q=60"]
+    },
+    {
+      id: 5,
+      name: "Fariha K.",
+      date: "February 20, 2026",
+      rating: 5,
+      comment: "I was skeptical about buying online, but EVON proved me wrong. Exactly like the pictures!",
+      images: []
+    }
+  ];
+
+  // Helper function to render glowing stars
+  const renderStars = (rating) => {
+    return [...Array(5)].map((_, index) => (
+      <svg key={index} className={`w-5 h-5 ${index < rating ? 'text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]' : 'text-slate-700'}`} fill="currentColor" viewBox="0 0 20 20">
+        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+      </svg>
+    ));
+  };
+
+  return (
+    <div className="bg-slate-950 py-24 sm:py-32 border-t border-slate-900 relative overflow-hidden">
+      
+      {/* Background Glow */}
+      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-indigo-600/10 blur-[150px] rounded-full pointer-events-none"></div>
+
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-sm font-black text-indigo-500 uppercase tracking-[0.2em] mb-3">Customer Stories</h2>
+          <h3 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-6">Loved by Thousands</h3>
+          <div className="flex items-center justify-center gap-3">
+            <div className="flex">{renderStars(5)}</div>
+            <span className="font-bold text-slate-300 text-lg">4.9/5 Average Rating</span>
+          </div>
+        </div>
+
+        {/* Review Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
+          {reviews.map(review => (
+            <div key={review.id} className="bg-slate-900 p-8 md:p-10 rounded-[2rem] border border-slate-800 hover:border-slate-700 transition-colors flex flex-col h-full shadow-xl">
+              
+              {/* User Header */}
+              <div className="flex justify-between items-start mb-6">
+                <div>
+                  <p className="text-white font-bold text-xl">{review.name}</p>
+                  <p className="text-slate-500 text-xs font-bold uppercase tracking-wider mt-1.5">{review.date}</p>
+                </div>
+                <div className="flex">
+                  {renderStars(review.rating)}
+                </div>
+              </div>
+
+              {/* Review Text */}
+              <p className="text-slate-300 text-lg leading-relaxed font-medium mb-8 flex-grow">
+                "{review.comment}"
+              </p>
+
+              {/* Review Images */}
+              {review.images && review.images.length > 0 && (
+                // 🚨 CRITICAL FIX: Changed to flex-wrap and gap-4 to handle larger images
+                <div className="flex flex-wrap gap-4 mt-auto pt-6 border-t border-slate-800/50">
+                  {review.images.map((imgUrl, idx) => (
+                    // 🚨 THE SIZING FIX: Changed to w-24 h-24 sm:w-28 sm:h-28 (Massive upgrade!)
+                    <div key={idx} className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-slate-700 cursor-pointer hover:border-indigo-500 transition-all shadow-lg">
+                      <img src={imgUrl} alt={`Review by ${review.name}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-300" />
+                    </div>
+                  ))}
+                </div>
+              )}
+
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+export default Revi

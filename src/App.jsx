@@ -1,6 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'; // Make sure this is react-router-dom!
-
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router';
 // Components
 import Navbar from './Component/Navbar';
 import Hero from './Component/Hero';

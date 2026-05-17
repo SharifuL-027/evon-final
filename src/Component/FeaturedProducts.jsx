@@ -30,7 +30,7 @@ const FeaturedProducts = () => {
   }
 
   return (
-    <div className="bg-slate-950 py-24 sm:py-32 relative overflow-hidden">
+    <div className="bg-white py-24 sm:py-32 relative overflow-hidden">
       
       {/* Cool Background Glow Effect */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-indigo-600/20 blur-[120px] rounded-full pointer-events-none"></div>
@@ -40,7 +40,7 @@ const FeaturedProducts = () => {
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
             <h2 className="text-sm font-black text-indigo-500 uppercase tracking-[0.2em] mb-3">Signature Collection</h2>
-            <h3 className="text-4xl md:text-5xl font-black text-white tracking-tight">Our Featured Picks</h3>
+            <h3 className="text-4xl md:text-5xl font-black poppins-bold text-black tracking-tight">Our Featured Products</h3>
           </div>
           <Link to="/products" className="group flex items-center gap-2 text-white font-bold hover:text-indigo-400 transition-colors">
             View All Products
