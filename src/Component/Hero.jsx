@@ -12,7 +12,12 @@ const Hero = () => {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-600/20 rounded-full blur-[100px]"></div>
       </div>
 
-      <div className="relative max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 flex flex-col lg:flex-row items-center w-full">     
+      <div className="relative max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 flex flex-col lg:flex-row items-center w-full">
+        
+        {/* Left Side: Typography & Call to Action */}
+        <div className="lg:w-1/2 text-center lg:text-left z-10 flex flex-col justify-center">
+
+
           <h1 className="text-5xl md:text-7xl lg:text-[5rem] font-extrabold text-white tracking-tight leading-[1.1] mb-6">
             Step Into <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">
@@ -33,7 +38,7 @@ const Hero = () => {
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
             </Link>
             
-<a 
+    <a 
   href="https://wa.me/8801605992460?text=Hello%20EVON%20Support!%20I%20need%20help%20with..." 
   target="_blank" 
   rel="noopener noreferrer"
@@ -69,10 +74,6 @@ const Hero = () => {
           {/* Glassmorphism Card Behind the Shoe */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[110%] bg-gradient-to-br from-indigo-500/10 to-transparent rounded-full blur-xl -z-10 border border-white/5"></div>
           
-          {/* Pro Tip for E-commerce: 
-            For the best effect here, use a transparent .PNG of a shoe. 
-            The '-rotate-12' class gives it that dynamic, floating "in-motion" feel.
-          */}
           <div className="relative group">
             <img 
               src="/public/images/heroshow.png" 
@@ -83,7 +84,7 @@ const Hero = () => {
             {/* Floating Price Tag Badge */}
             <div className="absolute top-4 right-4 md:top-10 md:-right-4 bg-slate-900/90 backdrop-blur-md border border-slate-700 p-4 rounded-2xl shadow-2xl animate-bounce" style={{ animationDuration: '3s' }}>
               <p className="text-indigo-400 text-xs font-bold uppercase tracking-wider mb-1">Limited Edition</p>
-              <p className="text-white font-extrabold text-2xl">$199.00</p>
+              <p className="text-white font-extrabold text-2xl">tk1300.</p>
             </div>
           </div>
 
