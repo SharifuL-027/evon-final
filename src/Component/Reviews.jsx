@@ -8,7 +8,7 @@ const Reviews = () => {
     {
       id: 1,
       name: "Tahmina Akter",
-      date: "October 12, 2026",
+      date: "April 12, 2026",
       rating: 5,
       comment: "Absolutely love the quality! The material is exactly as described and it fits perfectly. Delivery was super fast too.",
       images: ["/public/images/rev-1.jpeg"]
@@ -16,7 +16,7 @@ const Reviews = () => {
     {
       id: 2,
       name: "Sarah Rahman",
-      date: "November 05, 2026",
+      date: "March 05, 2026",
       rating: 5,
       comment: "Premium packaging and the color is gorgeous. I wore it to an event and got so many compliments! Highly recommend EVON.",
       images: [
@@ -26,7 +26,7 @@ const Reviews = () => {
     {
       id: 3,
       name: "Nadia Islam",
-      date: "December 01, 2026",
+      date: "April 01, 2026",
       rating: 4,
       comment: "Very beautiful and comfortable. Dropping one star because the delivery took an extra day, but the product itself is flawless.",
       images: ['/public/images/rev-3.jpeg']
@@ -119,4 +119,4 @@ const Reviews = () => {
   );
 };
 
-export default Revi
+export default Reviews;
