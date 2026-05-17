@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Outlet } from 'react-router'; 
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'; // Make sure this is react-router-dom!
 
 // Components
 import Navbar from './Component/Navbar';
@@ -9,6 +9,8 @@ import AdminLogin from './Component/AdminLogin';
 import ProtectedRoute from './Component/ProtectedRoute';
 import AdminDashboard from './Component/AdminDashboard'; 
 import ProductDetails from './Component/ProductDetails';
+import FeaturedProducts from './Component/FeaturedProducts';
+import Reviews from './Component/Reviews'; // <-- Don't forget to import Reviews!
 
 const StoreLayout = () => {
   return (
@@ -28,9 +30,18 @@ function App() {
 
         {/* --- CUSTOMER FACING ROUTES (With Navbar) --- */}
         <Route element={<StoreLayout />}>
-          <Route path="/" element={<><Hero /><Products /></>} />        
+          
+          {/* 🌟 THE FIX: Stack them all inside one single element tag! */}
+          <Route path="/" element={
+            <>
+              <Hero />
+              <FeaturedProducts />
+              <Products />
+              <Reviews />
+            </>
+          } />        
+          
           <Route path="/products" element={<Products />} />
-          {/* MOVED THIS INSIDE! Now it gets the Navbar! */}
           <Route path="/product/:id" element={<ProductDetails />} />
         </Route>
 

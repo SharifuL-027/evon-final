@@ -18,15 +18,15 @@ const Hero = () => {
         <div className="lg:w-1/2 text-center lg:text-left z-10 flex flex-col justify-center">
 
 
-          <h1 className="text-5xl md:text-7xl lg:text-[5rem] font-extrabold text-white tracking-tight leading-[1.1] mb-6">
+          <h1 className="text-5xl md:text-7xl lg:text-[5rem] poppins-bold text-white tracking-tight leading-[1.1] mb-6">
             Step Into <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">
+            <span className="text-transparent poppins-extrabold bg-clip-text bg-gradient-to-r from-indigo-300 to-violet-700">
               The Future.
             </span>
           </h1>
           
-          <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto lg:mx-0 font-light">
-            Experience unparalleled comfort and gravity-defying design. The new EVON Phantom series is engineered to redefine your journey.
+          <p className="text-lg md:text-xl poppins-bold text-slate-400 mb-10 max-w-2xl mx-auto lg:mx-0 font-light">
+            Experience unparalleled comfort and gravity-defying design. The new EVON series 01 is engineered to redefine your journey.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">

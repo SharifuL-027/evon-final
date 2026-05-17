@@ -48,9 +48,9 @@ const Navbar = () => {
           {/* Navigation Links */}
           <div className="hidden lg:flex items-center space-x-10 poppins-extrabold">
             <Link to="/" className="text-indigo-400 font-semibold tracking-wide flex items-center gap-1">Home</Link>
-            <Link to="/products" className="text-slate-300 hover:text-indigo-400 font-semibold tracking-wide transition-colors">Shop</Link>
-            <Link to="/blog" className="text-slate-300 hover:text-indigo-400 font-semibold tracking-wide transition-colors">Blog</Link>
-            <Link to="/about" className="text-slate-300 hover:text-indigo-400 font-semibold tracking-wide transition-colors">About</Link>
+            <Link to="/products" className="text-white hover:text-indigo-400 font-semibold tracking-wide transition-colors">Shop</Link>
+            <Link to="/blog" className="text-white hover:text-indigo-400 font-semibold tracking-wide transition-colors">Blog</Link>
+            <Link to="/about" className="text-white hover:text-indigo-400 font-semibold tracking-wide transition-colors">About</Link>
           </div>
 
           {/* Search, Cart, & Login Area */}
