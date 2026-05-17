@@ -40,13 +40,13 @@ const Navbar = () => {
           {/* Logo Area */}
           <div className="flex-shrink-0 flex items-center gap-3">
             {/* CHANGED: border-white/20 is now border-slate-700 */}
-            <Link to="/" className="text-3xl font-extrabold text-white tracking-[0.15em] border-y-2 border-slate-700 py-0.5 hover:border-indigo-500 transition-colors">
+            <Link to="/" className="text-3xl poppins-extrabold font-extrabold text-white tracking-[0.15em] border-y-2 border-slate-700 py-0.5 hover:border-indigo-500 transition-colors">
               EVON
             </Link>
           </div>
 
           {/* Navigation Links */}
-          <div className="hidden lg:flex items-center space-x-10">
+          <div className="hidden lg:flex items-center space-x-10 poppins-extrabold">
             <Link to="/" className="text-indigo-400 font-semibold tracking-wide flex items-center gap-1">Home</Link>
             <Link to="/products" className="text-slate-300 hover:text-indigo-400 font-semibold tracking-wide transition-colors">Shop</Link>
             <Link to="/blog" className="text-slate-300 hover:text-indigo-400 font-semibold tracking-wide transition-colors">Blog</Link>

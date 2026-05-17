@@ -24,6 +24,67 @@ const ProductDetails = () => {
     transform: 'scale(1)',
   });
 
+  // =========================================
+  // 🌟 MOCK REVIEW DATA (5 Reviews) 🌟
+  // =========================================
+  // =========================================
+  // 🌟 MOCK REVIEW DATA (2026 Version) 🌟
+  // =========================================
+  const reviews = [
+    {
+      id: 1,
+      name: "Tahmina Akter",
+      date: "October 12, 2026",
+      rating: 5,
+      comment: "Absolutely love the quality! The material is exactly as described and it fits perfectly. Delivery was super fast too.",
+      images: ["https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&auto=format&fit=crop&q=60"]
+    },
+    {
+      id: 2,
+      name: "Sarah Rahman",
+      date: "November 05, 2026",
+      rating: 5,
+      comment: "Premium packaging and the color is gorgeous. I wore it to an event and got so many compliments! Highly recommend EVON.",
+      images: [
+        "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1588117305388-c2631a279f82?w=500&auto=format&fit=crop&q=60"
+      ]
+    },
+    {
+      id: 3,
+      name: "Nadia Islam",
+      date: "December 01, 2026",
+      rating: 4,
+      comment: "Very beautiful and comfortable. Dropping one star because the delivery took an extra day, but the product itself is flawless.",
+      images: []
+    },
+    {
+      id: 4,
+      name: "Ayesha S.",
+      date: "January 15, 2026",
+      rating: 5,
+      comment: "Worth every Taka! The stitching is top-notch and the inner material feels very luxurious. Will definitely order again.",
+      images: ["https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&auto=format&fit=crop&q=60"]
+    },
+    {
+      id: 5,
+      name: "Fariha K.",
+      date: "February 20, 2026",
+      rating: 5,
+      comment: "I was skeptical about buying online, but EVON proved me wrong. Exactly like the pictures!",
+      images: []
+    }
+  ];
+
+  // Helper function to render stars
+  const renderStars = (rating) => {
+    return [...Array(5)].map((_, index) => (
+      <svg key={index} className={`w-5 h-5 ${index < rating ? 'text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]' : 'text-slate-700'}`} fill="currentColor" viewBox="0 0 20 20">
+        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+      </svg>
+    ));
+  };
+
   useEffect(() => {
     const fetchSingleProduct = async () => {
       try {
@@ -57,7 +118,6 @@ const ProductDetails = () => {
     setZoomStyle({ transformOrigin: 'center center', transform: 'scale(1)' });
   };
 
-  // 🎯 THE FETCH ORDER FUNCTION (Perfectly enclosed!)
   const submitOrder = async (e) => {
     e.preventDefault();
     
@@ -114,10 +174,12 @@ const ProductDetails = () => {
   const orderTotal = (product.price * quantity).toFixed(2);
 
   return (
-    <div className="min-h-screen bg-[#f8f9fa] py-12 px-4 sm:px-6 lg:px-8 font-sans antialiased relative">
+    <div className="min-h-screen bg-[#f8f9fa] pt-32 pb-20 px-4 sm:px-6 lg:px-8 font-sans antialiased relative">
       
-      <div className="max-w-7xl mx-auto bg-white rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 ease-out overflow-hidden p-8 md:p-12 border border-slate-100">
-        
+      {/* ========================================= */}
+      {/* MAIN PRODUCT CARD */}
+      {/* ========================================= */}
+      <div className="max-w-7xl mx-auto bg-white rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 ease-out overflow-hidden p-8 md:p-12 border border-slate-100 mb-12">
         <div className="flex flex-col lg:flex-row gap-16">
           
           <div className="w-full lg:w-1/2">
@@ -270,7 +332,63 @@ const ProductDetails = () => {
       </div>
 
       {/* ========================================= */}
-      {/* 🎯 THE CHECKOUT MODAL */}
+      {/* 🌟 NEW: DARK BLUISH-BLACK REVIEWS SECTION 🌟 */}
+      {/* ========================================= */}
+      <div className="max-w-7xl mx-auto bg-slate-950 rounded-[2.5rem] shadow-2xl p-8 md:p-12 border border-slate-800">
+        
+        {/* Review Header */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 border-b border-slate-800 pb-8 gap-6">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight">Customer Reviews</h2>
+            <div className="flex items-center gap-3 mt-4">
+              <div className="flex">{renderStars(5)}</div>
+              <span className="font-bold text-slate-300 text-lg">4.8 out of 5 <span className="text-slate-500 font-medium text-sm ml-1">({reviews.length} Reviews)</span></span>
+            </div>
+          </div>
+          <button className="px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl font-black transition-all shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.5)]">
+            Write a Review
+          </button>
+        </div>
+
+        {/* Review Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {reviews.map(review => (
+            <div key={review.id} className="bg-slate-900 p-8 rounded-3xl border border-slate-800 hover:border-slate-700 transition-colors flex flex-col h-full">
+              
+              {/* User Header */}
+              <div className="flex justify-between items-start mb-6">
+                <div>
+                  <p className="text-white font-bold text-lg">{review.name}</p>
+                  <p className="text-slate-500 text-xs font-bold uppercase tracking-wider mt-1">{review.date}</p>
+                </div>
+                <div className="flex">
+                  {renderStars(review.rating)}
+                </div>
+              </div>
+
+              {/* Review Text */}
+              <p className="text-slate-300 leading-relaxed font-medium mb-6 flex-grow">
+                "{review.comment}"
+              </p>
+
+              {/* Review Images */}
+              {review.images && review.images.length > 0 && (
+                <div className="flex gap-3 mt-auto">
+                  {review.images.map((imgUrl, idx) => (
+                    <div key={idx} className="w-20 h-20 rounded-xl overflow-hidden border border-slate-700 cursor-pointer hover:border-indigo-500 transition-all">
+                      <img src={imgUrl} alt={`Review by ${review.name}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-300" />
+                    </div>
+                  ))}
+                </div>
+              )}
+
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ========================================= */}
+      {/* 🎯 THE CHECKOUT MODAL (Unchanged) */}
       {/* ========================================= */}
       {isOrderModalOpen && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex justify-center items-center p-4">
@@ -287,7 +405,6 @@ const ProductDetails = () => {
             </div>
             
             <form onSubmit={submitOrder} className="p-8 space-y-5">
-              
               <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 mb-6 shadow-sm">
                 <div className="flex items-center gap-4 mb-4">
                    <img src={mainImage} className="w-16 h-16 rounded-xl object-cover border border-slate-200" alt="order summary" />
