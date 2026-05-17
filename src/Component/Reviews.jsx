@@ -11,7 +11,7 @@ const Reviews = () => {
       date: "October 12, 2026",
       rating: 5,
       comment: "Absolutely love the quality! The material is exactly as described and it fits perfectly. Delivery was super fast too.",
-      images: ["https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&auto=format&fit=crop&q=60"]
+      images: ["/public/images/rev-1.jpeg"]
     },
     {
       id: 2,
@@ -20,8 +20,7 @@ const Reviews = () => {
       rating: 5,
       comment: "Premium packaging and the color is gorgeous. I wore it to an event and got so many compliments! Highly recommend EVON.",
       images: [
-        "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&auto=format&fit=crop&q=60",
-        "https://images.unsplash.com/photo-1588117305388-c2631a279f82?w=500&auto=format&fit=crop&q=60"
+        "/public/images/rev-2.jpeg"
       ]
     },
     {
@@ -30,7 +29,7 @@ const Reviews = () => {
       date: "December 01, 2026",
       rating: 4,
       comment: "Very beautiful and comfortable. Dropping one star because the delivery took an extra day, but the product itself is flawless.",
-      images: []
+      images: ['/public/images/rev-3.jpeg']
     },
     {
       id: 4,
@@ -38,7 +37,7 @@ const Reviews = () => {
       date: "January 15, 2026",
       rating: 5,
       comment: "Worth every Taka! The stitching is top-notch and the inner material feels very luxurious. Will definitely order again.",
-      images: ["https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&auto=format&fit=crop&q=60"]
+      images: ["/public/images/rev-4.jpeg"]
     },
     {
       id: 5,
@@ -46,7 +45,7 @@ const Reviews = () => {
       date: "February 20, 2026",
       rating: 5,
       comment: "I was skeptical about buying online, but EVON proved me wrong. Exactly like the pictures!",
-      images: []
+      images: ['/public/images/rev-5.jpeg']
     }
   ];
 
