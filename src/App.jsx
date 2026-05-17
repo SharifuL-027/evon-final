@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Outlet } from 'react-router';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router'; 
+
 // Components
 import Navbar from './Component/Navbar';
 import Hero from './Component/Hero';
@@ -9,10 +10,11 @@ import ProtectedRoute from './Component/ProtectedRoute';
 import AdminDashboard from './Component/AdminDashboard'; 
 import ProductDetails from './Component/ProductDetails';
 import FeaturedProducts from './Component/FeaturedProducts';
-import Reviews from './Component/Reviews'; // <-- Don't forget to import Reviews!
-import Footer from './Component/Footer';
 import AboutSummary from './Component/AboutSummary';
+import Reviews from './Component/Reviews';
+import Footer from './Component/Footer';
 
+// 🌟 THE LAYOUT WRAPPER 🌟
 const StoreLayout = () => {
   return (
     <>
@@ -20,6 +22,7 @@ const StoreLayout = () => {
       <main className="min-h-screen bg-white">
         <Outlet /> 
       </main>
+      <Footer /> 
     </>
   );
 };
@@ -29,35 +32,35 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        {/* --- CUSTOMER FACING ROUTES (With Navbar) --- */}
+        {/* 🌟 EVERYTHING IS NOW INSIDE THIS WRAPPER 🌟 */}
         <Route element={<StoreLayout />}>
           
-          {/* 🌟 THE FIX: Stack them all inside one single element tag! */}
+          {/* --- CUSTOMER FACING ROUTES --- */}
           <Route path="/" element={
             <>
               <Hero />
-              <Products />
-              <AboutSummary />
               <FeaturedProducts />
+              <AboutSummary /> 
+              <Products />
               <Reviews />
-              <Footer />
             </>
           } />        
           
           <Route path="/products" element={<Products />} />
           <Route path="/product/:id" element={<ProductDetails />} />
-        </Route>
 
-        {/* --- ADMIN ROUTES (No Navbar) --- */}
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route 
-          path="/admin/dashboard" 
-          element={
-            <ProtectedRoute>
-              <AdminDashboard />
-            </ProtectedRoute>
-          } 
-        />
+          {/* --- ADMIN ROUTES (Now wrapped with Navbar and Footer!) --- */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route 
+            path="/admin/dashboard" 
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            } 
+          />
+
+        </Route>
 
       </Routes>
     </BrowserRouter>
