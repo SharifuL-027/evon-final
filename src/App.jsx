@@ -10,6 +10,8 @@ import AdminDashboard from './Component/AdminDashboard';
 import ProductDetails from './Component/ProductDetails';
 import FeaturedProducts from './Component/FeaturedProducts';
 import Reviews from './Component/Reviews'; // <-- Don't forget to import Reviews!
+import Footer from './Component/Footer';
+import AboutSummary from './Component/AboutSummary';
 
 const StoreLayout = () => {
   return (
@@ -34,9 +36,11 @@ function App() {
           <Route path="/" element={
             <>
               <Hero />
-              <FeaturedProducts />
               <Products />
+              <AboutSummary />
+              <FeaturedProducts />
               <Reviews />
+              <Footer />
             </>
           } />        
           
