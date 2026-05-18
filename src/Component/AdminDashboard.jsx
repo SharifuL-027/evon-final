@@ -31,14 +31,14 @@ const AdminDashboard = () => {
     const fetchAllData = async () => {
       // 1. Fetch Products
       try {
-        const prodRes = await fetch('http://localhost:5000/api/products');
+        const prodRes = await fetch('https://evonfits.onrender.com/api/products');
         if (prodRes.ok) setProducts(await prodRes.json());
       } catch (err) { console.error('Products error:', err); }
       finally { setIsLoadingProducts(false); }
 
       // 2. Fetch Orders
       try {
-        const ordRes = await fetch('http://localhost:5000/api/orders');
+        const ordRes = await fetch('https://evonfits.onrender.com/api/orders');
         if (ordRes.ok) setOrders(await ordRes.json());
       } catch (err) { console.error('Orders error:', err); }
       finally { setIsLoadingOrders(false); }
@@ -104,7 +104,7 @@ const AdminDashboard = () => {
     });
 
     try {
-      const response = await fetch('http://localhost:5000/api/products', {
+      const response = await fetch('https://evonfits.onrender.com/api/products', {
         method: 'POST',
         body: formData, 
       });
@@ -118,7 +118,7 @@ const AdminDashboard = () => {
         setImagePreviews([null, null, null, null, null]);
         
         // Refresh products list
-        const newRes = await fetch('http://localhost:5000/api/products');
+        const newRes = await fetch('https://evonfits.onrender.com/api/products');
         if(newRes.ok) setProducts(await newRes.json());
         
         setActiveTab('products'); 
@@ -137,7 +137,7 @@ const AdminDashboard = () => {
   const handleDeleteProduct = async (id) => {
     if(window.confirm("Are you sure you want to permanently delete this product?")) {
       try {
-        const response = await fetch(`http://localhost:5000/api/products/${id}`, { method: 'DELETE' });
+        const response = await fetch(`https://evonfits.onrender.comapi/products/${id}`, { method: 'DELETE' });
         if (response.ok) setProducts(products.filter(p => p._id !== id));
       } catch (error) { console.error('Error deleting product:', error); }
     }

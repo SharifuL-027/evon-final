@@ -17,7 +17,7 @@ const Products = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/products');
+        const response = await fetch('https://evonfits.onrender.com/api/products');
         const data = await response.json();
         
         if (response.ok) {
