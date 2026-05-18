@@ -40,7 +40,7 @@ const Navbar = () => {
           {/* Logo Area */}
           <div className="flex-shrink-0 flex items-center gap-3">
             {/* CHANGED: border-white/20 is now border-slate-700 */}
-            <Link to="/" className="text-3xl poppins-extrabold font-extrabold text-white tracking-[0.15em] border-y-2 border-slate-700 py-0.5 hover:border-indigo-500 transition-colors">
+            <Link to="/" className="text-3xl gochi-hand-regular font-extrabold text-white tracking-[0.15em] border-y-2 border-slate-700 py-0.5 hover:border-indigo-500 transition-colors">
               EVON
             </Link>
           </div>

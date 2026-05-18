@@ -15,7 +15,7 @@ const Footer = () => {
           
           {/* Column 1: Brand Info */}
           <div className="space-y-6 flex flex-col items-center md:items-start text-center md:text-left">
-            <Link to="/" className="text-4xl font-extrabold text-white tracking-[0.2em] border-y-2 border-white/20 py-1 hover:border-indigo-500 transition-colors inline-block">
+            <Link to="/" className="text-4xl font-extrabold gochi-hand-regular text-white tracking-[0.2em] border-y-2 py-1 hover:border-indigo-500 transition-colors inline-block">
               EVON
             </Link>
             <p className="text-slate-400 text-lg leading-relaxed max-w-sm font-medium">
@@ -24,7 +24,7 @@ const Footer = () => {
           </div>
 
           {/* Column 2: Shop Links */}
-          <div>
+          <div className='poppins-extrabold'>
             <h3 className="text-lg font-black text-white uppercase tracking-[0.15em] mb-6 text-center md:text-left">Explore</h3>
             <ul className="space-y-4 text-center md:text-left">
               <li><Link to="/products" className="text-slate-300 hover:text-white font-medium transition-colors">All Products</Link></li>

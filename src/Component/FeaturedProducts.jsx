@@ -39,8 +39,8 @@ const FeaturedProducts = () => {
         
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
-            <h2 className="text-sm font-black text-indigo-500 uppercase tracking-[0.2em] mb-3">Signature Collection</h2>
-            <h3 className="text-4xl md:text-5xl font-black poppins-bold text-black tracking-tight">Our Featured Products</h3>
+            <h2 className="text-sm font-black poppins-bold  text-indigo-500 uppercase tracking-[0.2em] mb-3">Signature Collection</h2>
+            <h3 className="text-4xl md:text-5xl font-black poppins-extrabold text-black tracking-tight">Our Featured Products</h3>
           </div>
           <Link to="/products" className="group flex items-center gap-2 text-white font-bold hover:text-indigo-400 transition-colors">
             View All Products

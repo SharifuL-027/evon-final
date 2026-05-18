@@ -174,7 +174,7 @@ const ProductDetails = () => {
   const orderTotal = (product.price * quantity).toFixed(2);
 
   return (
-    <div className="min-h-screen bg-[#f8f9fa] pt-32 pb-20 px-4 sm:px-6 lg:px-8 font-sans antialiased relative">
+    <div className="min-h-screen poppins-regular bg-[#f8f9fa] pt-32 pb-20 px-4 sm:px-6 lg:px-8 font-sans antialiased relative">
       
       {/* ========================================= */}
       {/* MAIN PRODUCT CARD */}
@@ -218,8 +218,8 @@ const ProductDetails = () => {
               {product.stockQuantity <= 5 && product.stockQuantity > 0 && <span className="bg-orange-50 text-orange-600 text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-widest animate-pulse">Low Stock</span>}
             </div>
 
-            <p className="text-sm text-slate-400 font-bold tracking-widest uppercase mb-2">
-              By <span className="text-slate-900 font-black">{product.brand || 'EVON'}</span>
+            <p className="text-sm text-slate-400 poppins-extrabold font-bold tracking-widest uppercase mb-2">
+              By <span className="text-slate-900 poppins-extrabold font-black">{product.brand || 'EVON'}</span>
             </p>
 
             <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-6 leading-tight">
@@ -318,13 +318,15 @@ const ProductDetails = () => {
                 <button onClick={() => setQuantity(quantity + 1)} className="flex-1 h-full text-slate-400 hover:text-slate-900 hover:bg-slate-50 rounded-xl font-black text-xl transition-all">+</button>
               </div>
 
-              <button 
-                onClick={() => setIsOrderModalOpen(true)}
-                className="flex-1 w-full bg-gradient-to-r from-slate-800 to-black hover:from-slate-900 hover:to-black text-white h-16 rounded-2xl font-black text-lg transition-all flex justify-center items-center gap-3 shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.3)] hover:-translate-y-1"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                Order Now — ৳{orderTotal}
-              </button>
+    <button 
+  onClick={() => setIsOrderModalOpen(true)}
+  className="w-full bg-gradient-to-r from-slate-900 to-black hover:from-slate-800 hover:to-black text-white h-14 sm:h-16 rounded-full font-black text-lg sm:text-xl transition-all flex justify-center items-center gap-3 shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.3)] hover:-translate-y-1 active:scale-[0.98]"
+>
+  <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+  </svg>
+  Order Now : ৳ {orderTotal}
+</button>
             </div>
 
           </div>

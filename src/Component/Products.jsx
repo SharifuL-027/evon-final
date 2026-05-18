@@ -42,12 +42,27 @@ const Products = () => {
   }
 
   return (
-    <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-white">
+    <div className="max-w-[100%] mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-gray-100 poppins-regular">
       
       {/* Header (Kept Same) */}
-      <div className="mb-16 border-b border-slate-100 pb-10">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-slate-950 tracking-tighter mb-4">Latest Arrivals</h2>
-        <p className="text-xl text-slate-600 max-w-2xl font-medium">Explore our premium shoe collection from global brands.</p>
+ {/* 🌟 PREMIUM HEADER SECTION 🌟 */}
+      <div className="mb-16 border-b border-slate-100 pb-12 flex flex-col items-center text-center">
+
+        {/* The Gorgeous Gradient Heading */}
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter poppins-extrabold mb-6 bg-gradient-to-r from-slate-900 via-indigo-600 to-purple-600 text-transparent bg-clip-text drop-shadow-sm">
+          Our Latest Arrivals
+        </h2>
+        
+        {/* English Subtitle */}
+        <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-medium mb-3">
+          Explore our premium shoe collection from global brands.
+        </p>
+        
+        {/* Bengali Subtitle */}
+        <p className="text-base md:text-lg text-slate-500 max-w-2xl mx-auto poppins-semibold font-medium leading-relaxed">
+          আমাদের প্রিমিয়াম sneaker collection এক্সপ্লোর করুন — যেখানে স্টাইল, কমফোর্ট এবং এক্সক্লুসিভ ডিজাইনের নিখুঁত সমন্বয়। 👟✨
+        </p>
+        
       </div>
       
       {/* Grid (Kept Same) */}
@@ -56,13 +71,13 @@ const Products = () => {
         {products.length === 0 ? (
           <div className="col-span-full flex flex-col items-center justify-center py-20 text-center bg-slate-50 rounded-[2.5rem] border border-slate-100">
              <svg className="w-20 h-20 text-slate-300 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-             <p className="text-slate-500 text-2xl font-bold">No products found!</p>
-             <p className="text-slate-400 mt-2 font-medium">Head over to the Admin Dashboard to add some awesome shoes.</p>
+             <p className="text-slate-500 text-2xl font-bold poppins-extrabold">No products found!</p>
+             <p className="text-slate-400 mt-2 font-medium poppins-extrabold">Head over to the Admin Dashboard to add some awesome shoes.</p>
           </div>
         ) : (
           products.map((product) => (
-            // 🌟 1. CARD CONTAINER (Less rounded, new hover border color) 🌟
-            <div key={product._id} className="group relative bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(99,102,241,0.08)] hover:border-indigo-100 transition-all duration-500 hover:-translate-y-3 flex flex-col">
+            // 🌟 1. CARD CONTAINER (Added dark blue shadow and stronger translate-y lift) 🌟
+            <div key={product._id} className="group relative bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/30 hover:border-blue-200 transition-all duration-500 hover:-translate-y-4 flex flex-col">
               
               {/* 🌟 2. IMAGE SECTION (Switched object-cover to object-contain, added padding) 🌟 */}
               <div className="block w-full h-80 sm:h-96 bg-slate-50 overflow-hidden relative p-8 md:p-10">
@@ -78,7 +93,7 @@ const Products = () => {
               <div className="p-8 flex flex-col flex-grow">
                 
                 {/* 🌟 Brand Name Text (As seen in image) 🌟 */}
-                <p className="text-sm font-medium text-slate-500 mb-1.5 antialiased">By EVON</p>
+                <p className="text-sm font-medium text-slate-500 mb-1.5 antialiased gochi-hand-regular">EVON</p>
                 
                 {/* Product Title 🌟 */}
                 <h3 className="text-2xl font-extrabold text-slate-950 tracking-tight leading-tight mb-2 line-clamp-2">

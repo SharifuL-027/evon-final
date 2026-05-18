@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const Hero = () => {
   return (
     // 'pt-20' ensures the content isn't hidden behind your fixed 80px (h-20) navbar
-    <div className="relative bg-slate-950 overflow-hidden pt-20 min-h-screen flex items-center">
+    <div className="relative bg-slate-950 overflow-hidden pt-20 min-h-screen flex items-center poppins-regular">
       
       {/* Background Ambient Glow Effects */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full overflow-hidden pointer-events-none">
@@ -19,9 +19,9 @@ const Hero = () => {
 
 
           <h1 className="text-5xl md:text-7xl lg:text-[5rem] poppins-bold text-white tracking-tight leading-[1.1] mb-6">
-            Step Into <br />
+            Step Into 
             <span className="text-transparent poppins-extrabold bg-clip-text bg-gradient-to-r from-indigo-300 to-violet-700">
-              The Future.
+              The Future
             </span>
           </h1>
           
@@ -55,7 +55,7 @@ const Hero = () => {
           <div className="mt-14 flex items-center justify-center lg:justify-start gap-10 text-slate-400 border-t border-slate-800/50 pt-10">
             <div>
               <p className="text-3xl font-extrabold text-white">10k+</p>
-              <p className="text-xs uppercase tracking-[0.2em] font-semibold mt-1">Pairs Sold</p>
+              <p className="text-xs uppercase tracking-[0.2em] font-semibold poppins-bold mt-1">Pairs Sold</p>
             </div>
             <div className="w-px h-12 bg-slate-800"></div>
             <div>
@@ -63,7 +63,7 @@ const Hero = () => {
                 4.9 
                 <svg className="w-6 h-6 text-yellow-500 pb-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
               </p>
-              <p className="text-xs uppercase tracking-[0.2em] font-semibold mt-1">Top Rated</p>
+              <p className="text-xs uppercase tracking-[0.2em] font-semibold poppins-bold mt-1">Top Rated</p>
             </div>
           </div>
         </div>
@@ -82,9 +82,9 @@ const Hero = () => {
             />
             
             {/* Floating Price Tag Badge */}
-            <div className="absolute top-4 right-4 md:top-10 md:-right-4 bg-slate-900/90 backdrop-blur-md border border-slate-700 p-4 rounded-2xl shadow-2xl animate-bounce" style={{ animationDuration: '3s' }}>
-              <p className="text-indigo-400 text-xs font-bold uppercase tracking-wider mb-1">Limited Edition</p>
-              <p className="text-white font-extrabold text-2xl">tk1300.</p>
+            <div className="absolute poppins-bold top-4 right-4 md:top-10 md:-right-4 bg-gray-500 backdrop-blur-md border border-slate-700 p-4 rounded-2xl shadow-2xl animate-bounce" style={{ animationDuration: '3s' }}>
+              <p className="text-black text-xs font-bold uppercase tracking-wider mb-1">Limited Edition</p>
+              <p className="text-white font-bold text-2xl">1300 TK</p>
             </div>
           </div>
 
