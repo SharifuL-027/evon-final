@@ -42,7 +42,7 @@ const Products = () => {
   }
 
   return (
-    <div className="max-w-[100%] mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-gray-100 poppins-regular">
+    <div className="max-w-[100%] mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-[#FDFBF7] shadow-indigo-900/10 poppins-regular">
       
       {/* Header (Kept Same) */}
  {/* 🌟 PREMIUM HEADER SECTION 🌟 */}

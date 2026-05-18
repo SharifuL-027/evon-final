@@ -8,7 +8,7 @@ const BrandMarquee = () => {
   ];
 
   return (
-    <div className="bg-white py-12 border-y border-slate-100 overflow-hidden relative flex items-center">
+    <div className="bg-[#FDFBF7] shadow-indigo-900/10 py-12 border-y border-slate-100 overflow-hidden relative flex items-center">
       
       {/* 🌟 Premium Left & Right Fading Edges 🌟 */}
       <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>

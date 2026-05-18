@@ -15,6 +15,7 @@ import Reviews from './Component/Reviews';
 import Footer from './Component/Footer';
 import ScrollToTop from './Component/ScrollToTop';
 import BrandMarquee from './Component/BrandMarquee';
+import AboutUs from './Component/AboutUs';
 
 // 🌟 THE LAYOUT WRAPPER 🌟
 const StoreLayout = () => {
@@ -48,7 +49,8 @@ function App() {
               <FeaturedProducts />
               <Reviews />
             </>
-          } />        
+          } /> 
+          <Route path="/about" element={<AboutUs/>} />       
           
           <Route path="/products" element={<Products />} />
           <Route path="/product/:id" element={<ProductDetails />} />
