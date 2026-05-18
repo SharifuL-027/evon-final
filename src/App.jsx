@@ -13,6 +13,8 @@ import FeaturedProducts from './Component/FeaturedProducts';
 import AboutSummary from './Component/AboutSummary';
 import Reviews from './Component/Reviews';
 import Footer from './Component/Footer';
+import ScrollToTop from './Component/ScrollToTop';
+import BrandMarquee from './Component/BrandMarquee';
 
 // 🌟 THE LAYOUT WRAPPER 🌟
 const StoreLayout = () => {
@@ -22,7 +24,8 @@ const StoreLayout = () => {
       <main className="min-h-screen bg-white">
         <Outlet /> 
       </main>
-      <Footer /> 
+      <Footer />
+      <ScrollToTop/>
     </>
   );
 };
@@ -39,9 +42,10 @@ function App() {
           <Route path="/" element={
             <>
               <Hero />
-              <FeaturedProducts />
-              <AboutSummary /> 
+              <BrandMarquee/>
               <Products />
+              <AboutSummary /> 
+              <FeaturedProducts />
               <Reviews />
             </>
           } />        

@@ -53,11 +53,6 @@ const Products = () => {
           Our Latest Arrivals
         </h2>
         
-        {/* English Subtitle */}
-        <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-medium mb-3">
-          Explore our premium shoe collection from global brands.
-        </p>
-        
         {/* Bengali Subtitle */}
         <p className="text-base md:text-lg text-slate-500 max-w-2xl mx-auto poppins-semibold font-medium leading-relaxed">
           আমাদের প্রিমিয়াম sneaker collection এক্সপ্লোর করুন — যেখানে স্টাইল, কমফোর্ট এবং এক্সক্লুসিভ ডিজাইনের নিখুঁত সমন্বয়। 👟✨
@@ -77,7 +72,7 @@ const Products = () => {
         ) : (
           products.map((product) => (
             // 🌟 1. CARD CONTAINER (Added dark blue shadow and stronger translate-y lift) 🌟
-            <div key={product._id} className="group relative bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/30 hover:border-blue-200 transition-all duration-500 hover:-translate-y-4 flex flex-col">
+            <div key={product._id} className="group relative bg-white border border-slate-100 rounded-xl overflow-hidden shadow-lg shadow-slate-200/50 hover:shadow-4xl hover:shadow-indigo-900/30 hover:border-blue-200 transition-all duration-500 hover:-translate-y-4 flex flex-col">
               
               {/* 🌟 2. IMAGE SECTION (Switched object-cover to object-contain, added padding) 🌟 */}
               <div className="block w-full h-80 sm:h-96 bg-slate-50 overflow-hidden relative p-8 md:p-10">
