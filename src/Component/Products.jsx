@@ -46,7 +46,7 @@ const Products = () => {
       
       {/* Header (Kept Same) */}
  {/* 🌟 PREMIUM HEADER SECTION 🌟 */}
-      <div className="mb-16 border-b border-slate-100 pb-12 flex flex-col items-center text-center">
+      <div className="mb-16  border-slate-100 pb-12 flex flex-col items-center text-center">
 
         {/* The Gorgeous Gradient Heading */}
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter poppins-extrabold mb-6 bg-gradient-to-r from-slate-900 via-indigo-600 to-purple-600 text-transparent bg-clip-text drop-shadow-sm">

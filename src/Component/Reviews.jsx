@@ -60,7 +60,7 @@ const Reviews = () => {
 
   return (
     // 🚨 CHANGED: Background to white, border to light grey
-    <div className="bg-white py-24 sm:py-32 border-t border-slate-100 relative overflow-hidden">
+    <div className="bg-white py-24 sm:py-32  relative overflow-hidden">
       
       {/* Background Glow - softened for white bg */}
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-indigo-600/5 blur-[150px] rounded-full pointer-events-none"></div>
