@@ -137,7 +137,7 @@ const AdminDashboard = () => {
   const handleDeleteProduct = async (id) => {
     if(window.confirm("Are you sure you want to permanently delete this product?")) {
       try {
-        const response = await fetch(`https://evonfits.onrender.comapi/products/${id}`, { method: 'DELETE' });
+        const response = await fetch(`https://evonfits.onrender.com/api/products/${id}`, { method: 'DELETE' });
         if (response.ok) setProducts(products.filter(p => p._id !== id));
       } catch (error) { console.error('Error deleting product:', error); }
     }
